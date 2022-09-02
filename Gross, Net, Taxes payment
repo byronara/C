@@ -1,0 +1,59 @@
+int main()
+{
+    int hoursWork;
+    int regularHours = 40;
+    int payRateRegular = 12;
+    int payRateOvertime = 18;
+    int minimumPayment = 300;
+    int regularPayment = 450;
+    int grossPayment = 0;
+    int netPayment = 0;
+    int taxesOverall = 0;
+    int taxes300 = 15;
+    int taxes450 = 20;
+    int taxesRest = 25;
+
+    printf("How many hrs did you worked this week? :");
+    scanf("%d", &hoursWork);
+
+    if (hoursWork <= 0)
+    {
+        printf("Bro you have to work eventually");
+        return 0;
+    }
+    else if (hoursWork <= regularHours)
+    {
+        grossPayment = payRateRegular * hoursWork;
+        printf("Your gross Payment is %d for this week.You can do some extra work hours to get paid more.\n",grossPayment);
+    }
+    else
+    {
+        grossPayment = (payRateRegular * regularHours) + (payRateRegular * (hoursWork - regularHours));
+        printf("Your gross Payment is %d for this week with the extra work hours. Well done bro!!\n", grossPayment);
+    }
+
+    if (grossPayment <= minimumPayment)
+    {
+        taxesOverall = (grossPayment * taxes300)/100;
+        netPayment = grossPayment - taxesOverall;
+        printf ("Your total taxes are %d. \n", taxesOverall);
+        printf ("Your total net income for this week is %d.\n", netPayment);
+    }
+    else if (grossPayment > minimumPayment && grossPayment <= regularPayment)
+    {
+        taxesOverall = ((minimumPayment * taxes300)/100) + (((grossPayment - minimumPayment)* taxes450)/100);
+        netPayment = grossPayment - taxesOverall;
+        printf ("Your total taxes are %d. \n", taxesOverall);
+        printf ("Your total net income for this week is %d.\n", netPayment);
+    }
+    else
+    {
+        taxesOverall = ((minimumPayment * taxes300)/100) + ((regularPayment * taxes450)/100) + (((grossPayment - minimumPayment - regularPayment)* taxesRest)/100);
+        netPayment = grossPayment - taxesOverall;
+        printf ("Your total taxes are %d. \n", taxesOverall);
+        printf ("Your total net income for this week is %d.\n", netPayment);
+    }
+
+
+    return 0;
+}
