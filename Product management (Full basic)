@@ -1,0 +1,46 @@
+void readItem(struct ITEM * i);
+
+void printItem(struct ITEM * i);
+
+int main()
+{
+    struct ITEM itm;
+    struct ITEM *pitem1;
+    pitem1 = &itm;
+
+    pitem1->itemName = (char *)malloc(25*sizeof(char));
+
+    if(pitem1 == NULL)
+    {
+        exit(-1);
+    }
+
+
+    readItem(pitem1);
+    printItem(pitem1);
+
+    free(pitem1->itemName);
+
+    return 0;
+}
+void readItem(struct ITEM *i)
+{
+    printf("Whats is the name of the product?:\n");
+    scanf(" %s",i->itemName);
+
+    printf("Whats the total quantity of the products?:\n");
+    scanf(" %d", &i->quantity);
+
+    printf("What will be the price per product?:\n");
+    scanf(" %f", &i->price);
+
+    i->amount = (float)i->quantity * i->price;
+}
+
+void printItem(struct ITEM *i)
+{
+    printf("The name of this product is %s.\n", i->itemName);
+    printf("The total quantity we have is %d.\n", i->quantity);
+    printf("The price per product is %.2f.\n", i->price);
+    printf("The total amount of money we will get is %.2f.\n", i->amount);
+}
