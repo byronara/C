@@ -1,0 +1,34 @@
+int main()
+{
+    int j = 0;
+    int i = 2;
+    int prime[50];
+    int primeCount = 0;
+    int result = 0;
+
+    for(i = 2; i < 100; i++)
+    {
+        result = 0;
+        for(j=1; j < i; j++)
+        {
+            if ( i % j == 0)
+            {
+                result++;
+            }
+        }
+        if (result == 1)
+            {
+                prime[primeCount] = i;
+                primeCount++;
+            }
+    }
+
+    printf("Prime numbers are : \n");
+
+    for (j = 0; j < primeCount; j++)
+    {
+        printf("%d ", prime[j]);
+    }
+
+    return 0;
+}
