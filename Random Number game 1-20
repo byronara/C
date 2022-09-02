@@ -1,0 +1,62 @@
+int main ()
+{
+    time_t t;
+    srand((unsigned)time(&t));
+    int random = rand() % 21 ;
+    int tries = 5;
+    int playerPick = 0;
+    //printf("%d\n", random);
+
+    printf("I have choosed a random number from 0 to 20. Try guess it. You have %d tries. Good Luck!!\n", tries);
+
+    printf ("Pick up a number and try your luck :");
+    scanf ("%d", &playerPick);
+
+
+
+    while (tries != 0)
+    {
+        while (playerPick <0 || playerPick >20)
+    {
+        printf("You have to choose between 0 and 20. Try again :");
+        scanf ("%d", &playerPick);
+    }
+        if(playerPick > random)
+        {
+            --tries;
+            printf("Your number %d is greater than mine. Go again\n", playerPick);
+            printf("You have %d tries left.\n", tries);
+            printf("Pick your Number :");
+
+            scanf ("%d", &playerPick);
+            while (playerPick <0 || playerPick >20)
+            {
+                printf("You have to choose between 0 and 20. Try again :");
+                scanf ("%d", &playerPick);
+            }
+        }
+        else if(playerPick < random)
+        {
+            --tries;
+            printf("Your number %d is lower than mine. Go again\n", playerPick);
+            printf("You have %d tries left.\n", tries);
+            printf("Pick your Number :");
+
+            scanf ("%d", &playerPick);
+            while (playerPick <0 || playerPick >20)
+            {
+                printf("You have to choose between 0 and 20. Try again :");
+                scanf ("%d", &playerPick);
+            }
+        }
+        else
+        {
+
+            printf("    !!! Congratulations !!!\n");
+            printf("You have guessed the right Number.\n");
+            break;
+        }
+    }
+
+    return 0;
+}
