@@ -1,0 +1,77 @@
+int GCD(int i, int x);
+float absoluteValue(float i);
+float squareRoot(float i);
+
+int main()
+{
+    float i = -3.5;
+    int x = -24;
+
+    printf("Absolute value is %f\n", absoluteValue(x));
+    printf("Square Root of %d is : %f", x , squareRoot(x));
+
+
+    return 0;
+}
+
+int GCD(int i, int x)
+{
+    int gcdNumber = 0;
+    int count = 1;
+
+    if(i < 0)
+    {
+        i = absoluteValue(i);
+    }
+    if(x < 0)
+    {
+        x = absoluteValue(x);
+    }
+    if (i == 0 || x == 0)
+    {
+        printf("We cant get GDC with 0 as a number. Try again.");
+        return 0;
+    }
+    for (count = 1; count <= i && count <= x; count++)
+    {
+        if( i / count == 0 && x / count == 0)
+        {
+            gcdNumber = count;
+        }
+    }
+    return count;
+}
+
+float absoluteValue(float i)
+{
+    if ( i < 0)
+    {
+        i = -i;
+    }
+
+    return i;
+}
+
+float squareRoot(float i) // Babylonian Method
+{
+    if (i < 0)
+    {
+        i = absoluteValue(i);
+    }
+    if (i == 0)
+    {
+        printf("We cant get GDC with 0 as a number. Try again.");
+        return 0;
+    }
+
+    float error = 0.0001;
+    float x = i;
+
+
+
+    while ((x - i / x) > error )
+    {
+        x = (x + i / x)/2;
+    }
+    return x;
+}
